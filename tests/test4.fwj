@@ -1,0 +1,33 @@
+class Arith extends Object {
+int value;
+Arith(int value) {
+super();
+this.value = value;
+}
+Arith plus(Arith v) {
+return new Arith(this.value + v.value);
+}
+Arith minus(Arith v) {
+return new Arith(this.value - v.value);
+}
+Arith mult(Arith v) {
+return new Arith(this.value * v.value);
+}
+Arith div(Arith v) {
+return (v.value == 0) ? null : new Arith(this.value / v.value);
+}
+Arith mod(Arith v) {
+return (v.value == 0) ? null : new Arith(this.value % v.value);
+}
+}
+
+new Arith(5).plus(new Arith(2).mult(new Arith(3)));
+new Arith(3).mod(new Arith(5*5-6*3+1-41/6));
+new Arith(3).div(new Arith(5).minus(new Arith(3).plus(new Arith(2))));
+(new Arith(5).plus(new Arith(2)).value - 3 > 3) ? new Object() : new Arith(0);
+(new Arith(5).plus(new Arith(2)).value - 3 < 3) ? new Object() : null;
+(new Arith(5).plus(new Arith(2)).value - 3 >= 3) ? new Object() : null;
+(new Arith(5).plus(new Arith(2)).value - 3 <= 3) ? new Object() : null;
+(new Arith(5).plus(new Arith(2)).value - 3 == 3) ? new Object() : null;
+(new Arith(5).plus(new Arith(2)).value - 3 != 3) ? new Object() : null;
+new Arith(1).plus(new Arith(3).div(new Arith(5).minus(new Arith(3).plus(new Arith(2)))));

@@ -1,0 +1,46 @@
+class Integer extends Object {
+int value;
+Integer(int value) {
+super();
+this.value = value;
+}
+}
+class ListEntry extends Object {
+Object value;
+ListEntry next;
+ListEntry(Object value, ListEntry next) {
+super();
+this.value = value;
+this.next = next;
+}
+ListEntry append(ListEntry e) {
+return new ListEntry(this.value, (this.next == null) ? e : this.next.append(e));
+}
+}
+class List extends Object {
+ListEntry head;
+List(ListEntry head) {
+super();
+this.head = head;
+}
+Object hd() {
+return (this.head == null) ? null : this.head.value;
+}
+List tl() {
+return new List((this.head == null) ? null : this.head.next);
+}
+List append(List lst) {
+return new List((this.head == null) ? lst.head : this.head.append(lst.head));
+}
+boolean isEmpty() {
+return this.head == null;
+}
+}
+
+new List(new ListEntry(new Integer(5), new ListEntry(new Integer(3), null))).tl();
+new List(new ListEntry(new Integer(5), new ListEntry(new Integer(3), null))).append(new List(new ListEntry(new Integer(1), new ListEntry(new Integer(-1), null)))).tl();
+new List(new ListEntry(new Integer(5), new ListEntry(new Integer(3), null))).append(new List(new ListEntry(new Integer(1), new ListEntry(new Integer(-1), null)))).hd();
+new List(new ListEntry(new Integer(5), new ListEntry(new Integer(3), null))).isEmpty();
+new List(null).isEmpty();
+(new List(new ListEntry(new Integer(5), null)).isEmpty()) ? null : new Integer(100);
+(!new List(new ListEntry(new Integer(5), null)).isEmpty()) ? null : new Integer(100);
